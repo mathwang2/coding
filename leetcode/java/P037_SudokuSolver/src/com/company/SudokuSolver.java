@@ -113,33 +113,10 @@ public class SudokuSolver {
                 setNodeLinks(x,y);
             }
         }
-
-        /*
-        for (int x=0; x<9; ++x){
-            for (int y=0; y<9; ++y){
-                for (SudokuNode n:sudokuNodes[x][y].getLinkedNodes()){
-                    if (n.getX()!=sudokuNodes[x][y].getX() && n.getY()!=sudokuNodes[x][y].getY() && n.getZ()!=sudokuNodes[x][y].getZ()){
-                        System.out.printf("%d, %d\n", x, y);
-                    }
-                }
-            }
-        }*/
-
     }
 
     private void setNodeLinks(int x, int y){
         int[][] linkedXY = SudokuNode.calcLinkedNodesXY(x, y);
-
-
-
-/*
-        if (x==1 && y==3) {
-            System.out.printf("%d, %d, %d\n", x, y, SudokuNode.calcZ(x, y));
-            for (int[] k : linkedXY) {
-                System.out.printf("%d, %d, %d\n", sudokuNodes[k[0]][k[1]].getX(), sudokuNodes[k[0]][k[1]].getY(), sudokuNodes[k[0]][k[1]].getZ());
-            }
-        }
-        */
 
         SudokuNode[] linkedNodes = new SudokuNode[linkedXY.length];
         for (int i=0; i<linkedNodes.length;++i){

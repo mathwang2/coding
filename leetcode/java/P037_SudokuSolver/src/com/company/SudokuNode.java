@@ -14,10 +14,6 @@ public class SudokuNode {
     private int[] timesOccurredInLinkedNodes;
     private static final int maxTimesOccurranceAllowed = 3;
 
-    public SudokuNode[] getLinkedNodes(){
-        return linkedNodes;
-    }
-
     public void setLinkedNodes(SudokuNode[] linkedNodes){
         this.linkedNodes = linkedNodes;
     }
@@ -63,14 +59,6 @@ public class SudokuNode {
         boolean success = reduceTimesOccurredForAllLinkedNodes();
         if (success) this.currentNumber=SudokuNum.empty;
         return success;
-    }
-
-    public int getNumNodesLinked(){
-        return numNodesLinked;
-    }
-
-    public void setNumFixedAtInitialization(){
-        numFixedAtInitialization = true;
     }
 
     public boolean isNumFixedAtInitialization(){
@@ -146,15 +134,6 @@ public class SudokuNode {
         return z;
     }
 
-    public static boolean related(SudokuNode lhs, SudokuNode rhs){
-        return lhs.x==rhs.x||lhs.y==rhs.y||lhs.z==rhs.z;
-    }
-
-
-    public SudokuNode getRelatedNodes(int i){
-        return linkedNodes[i];
-    }
-
     private boolean updateTimesOccurredForAllLinkedNodes(){
         if (this.currentNumber==SudokuNum.empty) return true;
         for (SudokuNode n:linkedNodes){
@@ -184,10 +163,6 @@ public class SudokuNode {
         return true;
     }
 
-
-    private boolean hasPermit(SudokuNum s){
-        return timesOccurredInLinkedNodes[sudokuNumToInt(s)]==0;
-    }
 
 
     public SudokuNum findNextPermit(SudokuNum currentNum){
